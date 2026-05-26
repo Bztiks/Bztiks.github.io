@@ -60,7 +60,10 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[dmdba@localhost ~]$ cd /home/dmdba/dmdbms/bin</span><br><span class="line">[dmdba@localhost bin]$ ls</span><br><span class="line">[dmdba@localhost bin]$ ./DmServiceDMTEST start</span><br></pre></td></tr></table></figure>
 
 <p><img src="/2026/05/26/KylinServer-V10-SP3%E5%AE%89%E8%A3%85%E9%85%8D%E7%BD%AE%E8%BE%BE%E6%A2%A6DM8/2024012416062726IRD6IU245WEPVASP.png" alt="image.png"></p>
-<h2 id="DM服务查看器"><a href="#DM服务查看器" class="headerlink" title="DM服务查看器"></a>DM服务查看器</h2><p><strong>这里有个核心问题就是DM服务查看器需要桌面窗口支持的</strong>，这里使用<code>xhost +</code>命令可能会导致报错，明明有桌面窗口但是还是报错，**使用命令systemctl start lightdm **来进行窗口的启动（<strong>注意这里会导致窗口重启，注意保存数据</strong>），启动之后使用dmdba账户进行登录，切到root之后输入命令<code>xhost +</code>之后就不再报错，再切回dmdba账户使用export设置display参数即可</p>
+<h2 id="DM服务查看器"><a href="#DM服务查看器" class="headerlink" title="DM服务查看器"></a>DM服务查看器</h2><p><strong>这里有个核心问题就是DM服务查看器需要桌面窗口支持的</strong>，这里使用<code>xhost +</code>命令可能会导致报错，明明有桌面窗口但是还是报错，使用命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl start lightdm</span><br></pre></td></tr></table></figure>
+
+<p> 来进行窗口的启动（<strong>注意这里会导致窗口重启，注意保存数据</strong>），启动之后使用dmdba账户进行登录，切到root之后输入命令<code>xhost +</code>之后就不再报错，再切回dmdba账户使用export设置display参数即可</p>
 <figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">[dmdba@localhost ~]$ export DISPLAY=:0.0</span><br><span class="line">[dmdba@localhost ~]$ echo $DISPLAY</span><br><span class="line">:0.0</span><br><span class="line">[dmdba@localhost ~]$ cd /home/dmdba/dmdbms/tool/</span><br><span class="line">[dmdba@localhost tool]$ ./dmservice.sh</span><br></pre></td></tr></table></figure>
 
 <h2 id="重点问题"><a href="#重点问题" class="headerlink" title="重点问题"></a>重点问题</h2><p>可能到DM服务查看器的时候很多人无法启动<em>达梦数据库实例服务</em>，这是因为前面安装的时候使用<code>[dmdba@localhost bin]$ ./DmServiceDMTEST start</code>导致服务占用开启，返回去stop一下即可在DM服务查看器中正常启动运行，这里应该是达梦软件设计问题，导致后台与前台状态不统一</p>
