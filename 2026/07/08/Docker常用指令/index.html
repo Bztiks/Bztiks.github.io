@@ -1,0 +1,254 @@
+<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta name="description" content="Docker常用指令"><meta name="keywords" content="Docker"><meta name="author" content="Bztiks"><meta name="copyright" content="Bztiks"><title>Docker常用指令 | 北褶's Blog</title><link rel="shortcut icon" href="/melody-favicon.ico"><link rel="stylesheet" href="/css/index.css?version=1.9.1"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome@latest/css/font-awesome.min.css?version=1.9.1"><meta name="format-detection" content="telephone=no"><meta http-equiv="x-dns-prefetch-control" content="on"><link rel="dns-prefetch" href="https://cdn.jsdelivr.net"><meta http-equiv="Cache-Control" content="no-transform"><meta http-equiv="Cache-Control" content="no-siteapp"><script>var GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  hexoVersion: '8.1.2'
+} </script><meta name="generator" content="Hexo 8.1.2"></head><body><i class="fa fa-arrow-right" id="toggle-sidebar" aria-hidden="true"></i><div id="sidebar" data-display="true"><div class="toggle-sidebar-info text-center"><span data-toggle="Toggle article">Toggle site</span><hr></div><div class="sidebar-toc"><div class="sidebar-toc__title">Catalog</div><div class="sidebar-toc__progress"><span class="progress-notice">You've read</span><span class="progress-num">0</span><span class="progress-percentage">%</span><div class="sidebar-toc__progress-bar"></div></div><div class="sidebar-toc__content"><ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%A6-%E9%95%9C%E5%83%8F%E7%AE%A1%E7%90%86"><span class="toc-number">1.</span> <span class="toc-text">📦 镜像管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%9A%80-%E5%AE%B9%E5%99%A8%E7%AE%A1%E7%90%86"><span class="toc-number">2.</span> <span class="toc-text">🚀 容器管理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%A7%B9-%E6%B8%85%E7%90%86%E4%B8%8E%E7%BB%B4%E6%8A%A4"><span class="toc-number">3.</span> <span class="toc-text">🧹 清理与维护</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%93%8A-%E4%BF%A1%E6%81%AF%E6%9F%A5%E7%9C%8B"><span class="toc-number">4.</span> <span class="toc-text">📊 信息查看</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%8F%B7%EF%B8%8F-%E9%95%9C%E5%83%8F%E6%A0%87%E7%AD%BE%E4%B8%8E%E4%BF%9D%E5%AD%98"><span class="toc-number">5.</span> <span class="toc-text">🏷️ 镜像标签与保存</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%F0%9F%90%B3-Docker-Compose-%E5%B8%B8%E7%94%A8%E6%8C%87%E4%BB%A4"><span class="toc-number">6.</span> <span class="toc-text">🐳 Docker Compose 常用指令</span></a></li></ol></div></div><div class="author-info hide"><div class="author-info__avatar text-center"><img src="https://avatars.githubusercontent.com/u/57820638?v=4"></div><div class="author-info__name text-center">Bztiks</div><div class="author-info__description text-center">Normal Human</div><div class="follow-button"><a target="_blank" rel="noopener" href="https://github.com/Bztiks">Discover Me</a></div><hr><div class="author-info-articles"><a class="author-info-articles__archives article-meta" href="/archives"><span class="pull-left">Articles</span><span class="pull-right">7</span></a><a class="author-info-articles__tags article-meta" href="/tags"><span class="pull-left">Tags</span><span class="pull-right">11</span></a><a class="author-info-articles__categories article-meta" href="/categories"><span class="pull-left">Categories</span><span class="pull-right">5</span></a></div><hr><div class="author-info-links"><div class="author-info-links__title text-center">Links</div><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://github.com/Bztiks">Gitub</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://space.bilibili.com/3546870804646159">BiliBili</a><a class="author-info-links__name text-center" target="_blank" rel="noopener" href="https://www.cnblogs.com/beizhe">博客园</a></div></div></div><div id="content-outer"><div id="top-container" style="background-image: url(https://bing.img.run/rand_uhd.php)"><div id="page-header"><span class="pull-left"> <a id="site-name" href="/">北褶's Blog</a></span><i class="fa fa-bars toggle-menu pull-right" aria-hidden="true"></i><span class="pull-right menus">   <a class="site-page" href="/">Home</a><a class="site-page" href="/archives">Archives</a><a class="site-page" href="/tags">Tags</a><a class="site-page" href="/categories">Categories</a></span><span class="pull-right"></span></div><div id="post-info"><div id="post-title">Docker常用指令</div><div id="post-meta"><time class="post-meta__date"><i class="fa fa-calendar" aria-hidden="true"></i> 2026-07-08</time><span class="post-meta__separator">|</span><i class="fa fa-inbox post-meta__icon" aria-hidden="true"></i><a class="post-meta__categories" href="/categories/%E5%AE%B9%E5%99%A8/">容器</a><div class="post-meta-wordcount"><span>Word count: </span><span class="word-count">785</span><span class="post-meta__separator">|</span><span>Reading time: 2 min</span></div></div></div></div><div class="layout" id="content-inner"><article id="post"><div class="article-container" id="post-content"><h2 id="📦-镜像管理"><a href="#📦-镜像管理" class="headerlink" title="📦 镜像管理"></a>📦 镜像管理</h2><table>
+<thead>
+<tr>
+<th align="left">操作</th>
+<th align="left">指令示例</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">搜索镜像</td>
+<td align="left"><code>docker search nginx</code></td>
+<td align="left">从 Docker Hub 搜索镜像</td>
+</tr>
+<tr>
+<td align="left">拉取镜像</td>
+<td align="left"><code>docker pull nginx:latest</code></td>
+<td align="left">下载镜像到本地</td>
+</tr>
+<tr>
+<td align="left">列出镜像</td>
+<td align="left"><code>docker images</code> 或 <code>docker image ls</code></td>
+<td align="left">查看本地所有镜像</td>
+</tr>
+<tr>
+<td align="left">删除镜像</td>
+<td align="left"><code>docker rmi nginx</code> 或 <code>docker image rm nginx</code></td>
+<td align="left">删除指定镜像（需先删除使用它的容器）</td>
+</tr>
+<tr>
+<td align="left">强制删除镜像</td>
+<td align="left"><code>docker rmi -f nginx</code></td>
+<td align="left">强制删除镜像</td>
+</tr>
+<tr>
+<td align="left">查看镜像详情</td>
+<td align="left"><code>docker inspect nginx</code></td>
+<td align="left">查看镜像的详细信息</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="🚀-容器管理"><a href="#🚀-容器管理" class="headerlink" title="🚀 容器管理"></a>🚀 容器管理</h2><table>
+<thead>
+<tr>
+<th align="left">操作</th>
+<th align="left">指令示例</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">创建并运行容器</td>
+<td align="left"><code>docker run -d --name mynginx -p 80:80 nginx</code></td>
+<td align="left">最常用的指令，后台运行并映射端口</td>
+</tr>
+<tr>
+<td align="left">列出运行中的容器</td>
+<td align="left"><code>docker ps</code></td>
+<td align="left">查看当前正在运行的容器</td>
+</tr>
+<tr>
+<td align="left">列出所有容器</td>
+<td align="left"><code>docker ps -a</code></td>
+<td align="left">查看所有容器（包括停止的）</td>
+</tr>
+<tr>
+<td align="left">启动容器</td>
+<td align="left"><code>docker start mynginx</code></td>
+<td align="left">启动已停止的容器</td>
+</tr>
+<tr>
+<td align="left">停止容器</td>
+<td align="left"><code>docker stop mynginx</code></td>
+<td align="left">优雅停止容器</td>
+</tr>
+<tr>
+<td align="left">强制停止容器</td>
+<td align="left"><code>docker kill mynginx</code></td>
+<td align="left">立即停止容器</td>
+</tr>
+<tr>
+<td align="left">重启容器</td>
+<td align="left"><code>docker restart mynginx</code></td>
+<td align="left">重启容器</td>
+</tr>
+<tr>
+<td align="left">删除容器</td>
+<td align="left"><code>docker rm mynginx</code></td>
+<td align="left">删除容器（需先停止）</td>
+</tr>
+<tr>
+<td align="left">强制删除容器</td>
+<td align="left"><code>docker rm -f mynginx</code></td>
+<td align="left">强制删除运行中的容器</td>
+</tr>
+<tr>
+<td align="left">进入容器终端</td>
+<td align="left"><code>docker exec -it mynginx /bin/bash</code></td>
+<td align="left">进入容器内部进行调试</td>
+</tr>
+<tr>
+<td align="left">查看容器日志</td>
+<td align="left"><code>docker logs mynginx</code></td>
+<td align="left">查看容器输出日志</td>
+</tr>
+<tr>
+<td align="left">实时查看日志</td>
+<td align="left"><code>docker logs -f mynginx</code></td>
+<td align="left">持续跟踪日志输出</td>
+</tr>
+<tr>
+<td align="left">查看容器详情</td>
+<td align="left"><code>docker inspect mynginx</code></td>
+<td align="left">查看容器的详细信息</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="🧹-清理与维护"><a href="#🧹-清理与维护" class="headerlink" title="🧹 清理与维护"></a>🧹 清理与维护</h2><table>
+<thead>
+<tr>
+<th align="left">操作</th>
+<th align="left">指令示例</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">清理未使用资源</td>
+<td align="left"><code>docker system prune</code></td>
+<td align="left">删除未使用的容器、网络、镜像和构建缓存</td>
+</tr>
+<tr>
+<td align="left">清理所有资源</td>
+<td align="left"><code>docker system prune -a</code></td>
+<td align="left">更彻底地清理，包括未使用的镜像</td>
+</tr>
+<tr>
+<td align="left">删除所有停止的容器</td>
+<td align="left"><code>docker container prune</code></td>
+<td align="left">清理已停止的容器</td>
+</tr>
+<tr>
+<td align="left">删除所有未使用的镜像</td>
+<td align="left"><code>docker image prune</code></td>
+<td align="left">清理未使用的镜像</td>
+</tr>
+<tr>
+<td align="left">查看磁盘占用</td>
+<td align="left"><code>docker system df</code></td>
+<td align="left">查看 Docker 占用的磁盘空间</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="📊-信息查看"><a href="#📊-信息查看" class="headerlink" title="📊 信息查看"></a>📊 信息查看</h2><table>
+<thead>
+<tr>
+<th align="left">操作</th>
+<th align="left">指令示例</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">查看 Docker 版本</td>
+<td align="left"><code>docker version</code></td>
+<td align="left">显示客户端和服务端版本信息</td>
+</tr>
+<tr>
+<td align="left">查看系统信息</td>
+<td align="left"><code>docker info</code></td>
+<td align="left">显示 Docker 系统详细信息</td>
+</tr>
+<tr>
+<td align="left">查看容器资源占用</td>
+<td align="left"><code>docker stats</code></td>
+<td align="left">实时查看容器 CPU、内存等使用情况</td>
+</tr>
+<tr>
+<td align="left">查看容器内进程</td>
+<td align="left"><code>docker top mynginx</code></td>
+<td align="left">查看容器内正在运行的进程</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="🏷️-镜像标签与保存"><a href="#🏷️-镜像标签与保存" class="headerlink" title="🏷️ 镜像标签与保存"></a>🏷️ 镜像标签与保存</h2><table>
+<thead>
+<tr>
+<th align="left">操作</th>
+<th align="left">指令示例</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">给镜像打标签</td>
+<td align="left"><code>docker tag nginx:latest myrepo/nginx:v1</code></td>
+<td align="left">为镜像添加标签，用于推送到私有仓库</td>
+</tr>
+<tr>
+<td align="left">导出镜像为文件</td>
+<td align="left"><code>docker save -o nginx.tar nginx:latest</code></td>
+<td align="left">将镜像导出为 tar 文件</td>
+</tr>
+<tr>
+<td align="left">从文件导入镜像</td>
+<td align="left"><code>docker load -i nginx.tar</code></td>
+<td align="left">从 tar 文件导入镜像</td>
+</tr>
+</tbody></table>
+<hr>
+<h2 id="🐳-Docker-Compose-常用指令"><a href="#🐳-Docker-Compose-常用指令" class="headerlink" title="🐳 Docker Compose 常用指令"></a>🐳 Docker Compose 常用指令</h2><table>
+<thead>
+<tr>
+<th align="left">操作</th>
+<th align="left">指令示例</th>
+<th align="left">说明</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">启动所有服务</td>
+<td align="left"><code>docker compose up -d</code></td>
+<td align="left">在后台启动 docker-compose.yml 中定义的服务</td>
+</tr>
+<tr>
+<td align="left">停止并移除服务</td>
+<td align="left"><code>docker compose down</code></td>
+<td align="left">停止并移除容器、网络</td>
+</tr>
+<tr>
+<td align="left">重建并启动</td>
+<td align="left"><code>docker compose up -d --build</code></td>
+<td align="left">重新构建镜像并启动</td>
+</tr>
+<tr>
+<td align="left">查看服务日志</td>
+<td align="left"><code>docker compose logs</code></td>
+<td align="left">查看所有服务的日志</td>
+</tr>
+<tr>
+<td align="left">重启单个服务</td>
+<td align="left"><code>docker compose restart app</code></td>
+<td align="left">重启指定服务</td>
+</tr>
+</tbody></table>
+</div></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">Author: </span><span class="post-copyright-info"><a href="mailto:undefined">Bztiks</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">Link: </span><span class="post-copyright-info"><a href="http://bztiks.github.io/2026/07/08/Docker常用指令/">http://bztiks.github.io/2026/07/08/Docker常用指令/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">Copyright Notice: </span><span class="post-copyright-info">All articles in this blog are licensed under <a target="_blank" rel="noopener" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a> unless stating additionally.</span></div></div><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Docker/">Docker</a></div><nav id="pagination"><div class="next-post pull-right"><a href="/2026/05/29/2026%E4%BC%A0%E6%99%BA%E6%9D%AF%E5%9B%BD%E8%B5%9B-%E6%93%8D%E4%BD%9C%E7%B3%BB%E7%BB%9F%E5%A4%A7%E8%B5%9B/"><span>2026传智杯国赛-操作系统大赛</span><i class="fa fa-chevron-right"></i></a></div></nav></div></div><i class="fa fa-arrow-up" id="go-up" aria-hidden="true"></i><script src="https://cdn.jsdelivr.net/npm/animejs@latest/lib/anime.min.js"></script><script src="https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js"></script><script src="https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-animate@latest/velocity.min.js"></script><script src="https://cdn.jsdelivr.net/npm/velocity-ui-pack@latest/velocity.ui.min.js"></script><script src="/js/utils.js?version=1.9.1"></script><script src="/js/fancybox.js?version=1.9.1"></script><script src="/js/sidebar.js?version=1.9.1"></script><script src="/js/copy.js?version=1.9.1"></script><script src="/js/fireworks.js?version=1.9.1"></script><script src="/js/transition.js?version=1.9.1"></script><script src="/js/scroll.js?version=1.9.1"></script><script src="/js/head.js?version=1.9.1"></script><script>if(/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(navigator.userAgent)) {
+  $('#nav').addClass('is-mobile')
+  $('footer').addClass('is-mobile')
+  $('#top-container').addClass('is-mobile')
+}</script></body></html>
